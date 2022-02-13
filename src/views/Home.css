@@ -1,0 +1,36 @@
+.home-div {
+    overflow-y: visible !important;
+}
+
+.blue-background {
+    width: 100%;
+    height: 45%;
+    background-image: url(../../images/pattern-bg.png);
+    background-size: 100% 200px;
+    background-position-x: center;
+}
+
+.map-div {
+    width: 100%;
+    height: 100%;
+}
+
+.page-title {
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.info-container {
+    width: 85%;
+}
+
+.ip-input-div {
+    width: 100%;
+    height: 5rem;
+}
+
+.results-div{
+    width: 100%;
+    
+}
