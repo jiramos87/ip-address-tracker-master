@@ -34,9 +34,11 @@
 
 .results-div{
     width: 100%;
+    z-index: 1;
     
 }
 
 #map {
     height: 180px;
+    z-index: -1;
 }
