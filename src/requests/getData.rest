@@ -1,0 +1,1 @@
+GET https://geo.ipify.org/api/v2/country,city?apiKey=a…hI795hT1TIZrQpFv1qh3w3Gw&ipAddress=190.196.135.94

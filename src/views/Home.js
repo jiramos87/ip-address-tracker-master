@@ -8,16 +8,20 @@ const containerStyle = {
     width: '400px',
     height: '400px'
 }
-  
-const center = {
-    lat: -3.745,
-    lng: -38.523
-}
 
 const Home = () => {
 
     const [ipAddress, setIpAddress] = useState("192.212.174.101")
-    const [location, setLocation] = useState("Brooklyn, NY 10001")
+    const [lat, setLat] = useState(-3.745)
+    const [lng, setLng] = useState(-38.523)
+    const [center, setCenter] = useState({
+        lat: lat,
+        lng: lng
+    })
+    const [country, setCountry] = useState("US")
+    const [region, setRegion] = useState("NY")
+    const [city, setCity] = useState("Brooklyn")
+    const [postalCode, setPostalCode] = useState("10001")
     const [timezone, setTimezone] = useState("UTC -05:00")
     const [isp, setIsp] = useState("SpaceX Starlink")
     const [map, setMap] = useState(null)
@@ -39,12 +43,28 @@ const Home = () => {
         googleMapsApiKey: "AIzaSyD_fRRzQJ31fZdOTSrB3vMPmKiBj10FLtw"
     })
 
+    const geoipifyKey = 'at_2Wg6EhI795hT1TIZrQpFv1qh3w3Gw'
 
+    const getCenter = async (ip) => {
+        await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_2Wg6EhI795hT1TIZrQpFv1qh3w3Gw&ipAddress=${ip}`, { method: 'GET'})
+        .then(response => response.json())
+        .then((data) => {
+            setCenter({lat: data.location.lat, lng: data.location.lng})
+            setCountry(data.location.country)
+            setRegion(data.location.region)
+            setCity(data.location.city)
+            setPostalCode(data.location.postalCode)
+            setTimezone(data.location.timezone)
+            setIsp(data.isp)
+        })
+        console.log(center)
+    }
     const onChange = (e) => {
         setIpAddress(e.target.value)
     }
     const onSubmit = (e) => {
         e.preventDefault()
+        getCenter(ipAddress)
         // search api
     }
     return(
@@ -58,7 +78,7 @@ const Home = () => {
                         <IpInput onClick={onSubmit} onChange={onChange} value={ipAddress}/>
                     </div>
                     <div className="results-div mb-3">
-                        <Results ipAddress={ipAddress} location={location} timezone={timezone} isp={isp}/>
+                        <Results ipAddress={ipAddress} location={`${region}, ${city} ${postalCode} ${country}`} timezone={timezone} isp={isp}/>
 
                     </div>
                 </div>
