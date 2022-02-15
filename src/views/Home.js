@@ -5,8 +5,8 @@ import './Home.css'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '375px',
+    height: '375px'
 }
 
 const Home = () => {

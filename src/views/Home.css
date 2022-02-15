@@ -5,7 +5,7 @@
 
 .blue-background {
     position: relative;
-    width: 100%;
+    width: 375px;
     height: 300px;
     background-image: url(../../images/pattern-bg.png);
     background-size: cover;
@@ -13,8 +13,8 @@
 }
 
 .map-div {
-    width: 100%;
-    height: 367px;
+    width: 375px;
+    height: 375px;
 }
 
 .page-title {
@@ -40,5 +40,6 @@
 
 #map {
     height: 180px;
+    width: 375px;
     z-index: -1;
 }
